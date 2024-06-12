@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboard admin</title>
+
+    <%- include('../partials/head.ejs') %>
+  </head>
+  <style></style>
+  <body>
+    <div class="wrapper dashboard pb-5">
+      <div id="overlay" class="d-none">
+        <div class="overlay__inner">
+          <div class="overlay__content"><span class="spinner"></span></div>
+        </div>
+      </div>
+
+
+
+
+      <div class="d-flex">
+        <%- include('../partials/sidebar.ejs') %>
+        <div class="right-content" style="flex: 1">
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button
+                class="nav-link active"
+                id="nav-addProduct-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-addProduct"
+                type="button"
+                role="tab"
+                aria-controls="nav-addProduct"
+                aria-selected="true"
+              >
+                Thêm sản phẩm
+              </button>
+              <button
+                class="nav-link"
+                id="nav-editProduct-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-editProduct"
+                type="button"
+                role="tab"
+                aria-controls="nav-editProduct"
+                aria-selected="false"
+              >
+                Sửa sản phẩm
+              </button>
+            </div>
+          </nav>
+          <div class="content">
+            <% if (roles.includes("ADMIN_PRODUCT")) { %>
+            <div class="content_product mt-4 tab-content" id="nav-tabContent">
+              <div class="row" >
+                <div
+                  class="tab-pane fade show active product_main_content"
+                  id="nav-addProduct"
+                  role="tabpanel"
+                  aria-labelledby="nav-addProduct-tab"
+                >
+                  <div class="col-lg-12">
+                    <form action="" id="markdownFormProduct" class="position-relative">
+                         <div 
+                          onclick="handleCancelEditProduct()"
+                         class="btn-close position-absolute">
+                        </div>
+                        <div class="form-goup">
+                          <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="category_product"
+                            name="category_product"
+                          >
+                            <option value="0">Chọn danh mục sản phẩm</option>
+                            <% cats.forEach((item, index) => { %>
+                            <option value="<%= item.id %>"><%= item.name %></option>
+                            <% }) %>
+                          </select>
+                        </div>
+                        <div class="form-group mt-3 mb-3">
+                          <label for="name">Tên sản phẩm</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            placeholder="Tên sản phẩm"
+                          />
+                        </div>
+    
+                        <div class="form-group mb-3">
+                          <label class="form-label fs-6" for="">Ảnh</label>
+                          <input
+                            class="mb-3"
+                            type="file"
+                            name="image"
+                            id="image_product"
+                          />
+                          <div class="wp_preview_img_product border d-inline-block">
+                            <img
+                              alt="default preview image product"
+                              style="width: 200px !important;height: 200px !important;"
+                              id="preview_product"
+                              src="https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg"
+                            />
+                          </div>
+                        </div>
+    
+                        <div class="form-group">
+                          <Textarea id="markdown_product"></Textarea>
+                        </div>
+                        <button class="addProduct btn btn-primary">
+                          add product
+                        </button>
+                        <div class="form-group">
+                          <div
+                            onclick="handleEditProduct()"
+                            class="editProduct btn btn-warning d-none"
+                          >
+                            edit product
+                          </div>
+             
+                        </div>
+                      </form>
+ 
+                  </div>
+
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="nav-editProduct"
+                  role="tabpanel"
+                  aria-labelledby="nav-editProduct-tab"
+                >
+                  <div class="col-lg-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">id</th>
+                          <th scope="col">name</th>
+                          <th scope="col">img</th>
+                          <th scope="col">catid</th>
+                          <th scope="col">actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% products.forEach((item, index) => { %>
+                        <p id="imgProduct<%=item.id%>" class="d-none">
+                          <%= item.productimg %>
+                        </p>
+                        <p id="contentProduct<%=item.id%>" class="d-none">
+                          <%= item.productdesc %>
+                        </p>
+                        <tr>
+                          <th scope="row"><%= index + 1 %></th>
+                          <td><%= item.id %></td>
+                          <td id="nameProduct<%=item.id%>">
+                            <%= item.productname %>
+                          </td>
+                          <td>
+                            <img
+                              src="<%= item.productimg %>"
+                              alt="thumb_product"
+                              width="50px"
+                              height="50px"
+                            />
+                          </td>
+                          <td id="catProduct<%=item.id%>"><%= item.catid %></td>
+                          <td>
+                            <a
+                              href="/admin/delete-product?id=<%= item.id %>"
+                              class="btn btn-sm btn-danger"
+                              >remove</a
+                            >
+                            <button
+                         
+                              onclick="handleClickEditProduct('<%= item.id %>')"
+                              class="btn btn-warning btn-sm"
+                            >
+                              edit
+                            </button>
+                            <span id="id_edit_product" class="d-none"></span>
+                          </td>
+                        </tr>
+                        <% }) %>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>  
+              </div>
+            </div>
+            <% } else { %>
+            <div class="alert alert-danger mt-3" role="alert">
+              <h4>Bạn không có quyền truy cập vào nội dung này !!</h4>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/sidebar.js"></script>
+</html>

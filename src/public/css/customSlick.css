@@ -1,0 +1,85 @@
+.slick-arrow {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--white-color);
+  border: none;
+  background: var(--yellow-color);
+  width: 32px;
+  height: 32px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 1;
+  z-index: 2;
+  border-radius: 50%;
+  -webkit-transition: 0.4s linear;
+}
+
+.fa-arrow-left:before {
+  content: "\f060";
+}
+
+.slick-arrow:hover {
+  background: #f8c022;
+}
+
+.owl-item.active {
+  display: flex;
+  justify-content: center;
+}
+
+.owl-carousel .owl-nav button.owl-prev {
+  position: absolute;
+  cursor: pointer;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--white-color);
+  border: none;
+  background: var(--yellow-color);
+  width: 35px;
+  height: 35px;
+  display: flex !important;
+  justify-content: center;
+  /* align-items: center; */
+  font-size: 2rem;
+  line-height: 1;
+  z-index: 2;
+  border-radius: 50%;
+  -webkit-transition: 0.4s linear;
+}
+
+.owl-carousel .owl-nav button.owl-next:hover {
+  background: #f8c022;
+}
+.owl-carousel .owl-nav button.owl-next.disabled{
+  display: none !important;
+}
+.owl-carousel .owl-nav button.owl-prev.disabled{
+  display: none !important;
+}
+.owl-carousel .owl-nav button.owl-prev:hover {
+  background: #f8c022;
+}
+.owl-carousel .owl-nav button.owl-next {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--white-color);
+  border: none;
+  background: var(--yellow-color);
+  width: 35px;
+  height: 35px;
+  display: flex !important;
+  justify-content: center;
+  right: -15px;
+  font-size: 2rem;
+  line-height: 1;
+  z-index: 2;
+  border-radius: 50%;
+  -webkit-transition: 0.4s linear;
+}

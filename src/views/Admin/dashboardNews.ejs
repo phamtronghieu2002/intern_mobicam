@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dashboard admin</title>
+
+    <%- include('../partials/head.ejs') %>
+  </head>
+  <style></style>
+  <body>
+    <div class="wrapper dashboard pb-5">
+      <div id="overlay" class="d-none">
+        <div class="overlay__inner">
+          <div class="overlay__content"><span class="spinner"></span></div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <%- include('../partials/sidebar.ejs') %>
+        <div class="right-content" style="flex: 1">
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button
+                class="nav-link active"
+                id="nav-addNews-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-addNews"
+                type="button"
+                role="tab"
+                aria-controls="nav-addNews"
+                aria-selected="true"
+              >
+                Thêm tin tức
+              </button>
+              <button
+                class="nav-link"
+                id="nav-editNews-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-profile"
+                type="button"
+                role="tab"
+                aria-controls="nav-profile"
+                aria-selected="false"
+              >
+                Sửa tin tức
+              </button>
+            </div>
+          </nav>
+          <div class="content" >
+            <% if (roles.includes("ADMIN_NEWS")) { %>
+            <div class="content_product mt-4 tab-content" id="nav-tabContent">
+              <div class="row">
+                <div
+                  class="tab-pane fade show active"
+                  id="nav-addNews"
+                  role="tabpanel"
+                  aria-labelledby="nav-addNews-tab"
+                >
+                <div class="col-lg-12">
+                    <form id="markdownFormNews" action="" class="position-relative">
+                      <div 
+                      onclick="handleCancelEdit()"div
+                     class="btn-close position-absolute d-none">
+                    </div>
+                      <div class="form-group">
+                        <label class="form-label" for="">Tiêu đề</label>
+                        <input
+                          class="form-control mb-3"
+                          type="text"
+                          name="title"
+                          id="title"
+                          placeholder="title"
+                        />
+                      </div>
+                      <!-- upload image -->
+                      <div class="form-group">
+                        <label class="form-label fs-6" for="">Ảnh</label>
+                        <input class="mb-3" type="file" name="image" id="image_news" />
+                        <div class="wp_preview border d-inline-block">
+                          <img
+                            alt="default preview image"
+                            width="200px"
+                            height="200px"
+                            id="preview_news"
+                            src="https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label" for="">Nội dung</label>
+                        <textarea id="markdown"> </textarea>
+                        <button class="addNews btn btn-primary">add news</button>
+                      </div>
+                      <div class="form-group">
+                        <div
+                          onclick="handleEditNews()"
+                          class="editNews btn btn-warning d-none"
+                        >
+                          edit news
+                        </div>
+                        <div
+                          onclick="handleCancelEdit()"
+                          class="cancelNews btn btn-danger d-none"
+                        >
+                          cancel
+                        </div>
+                      </div>
+                    </form>
+         
+                  </div>
+
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="nav-profile"
+                  role="tabpanel"
+                  aria-labelledby="nav-editNews-tab"
+                >
+                <div class="col-lg-12">
+                    <div class="list-news">
+                      <table class="table table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">id</th>
+                            <th scope="col">title</th>
+                            <th scope="col">img</th>
+                            <th scope="col">actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% news.forEach((item, index) => { %>
+    
+                          <p id="imgNews<%=item.id%>" class="d-none">
+                            <%= item.img %>
+                          </p>
+                          <p id="contentNews<%=item.id%>" class="d-none">
+                            <%= item.content %>
+                          </p>
+                          <tr>
+                            <th scope="row"><%= index + 1 %></th>
+                            <td><%= item.id %></td>
+                            <td id="titleNews<%=item.id%>"><%= item.title %></td>
+                            <td>
+                              <img
+                                src="<%= item.img %>"
+                                alt="thumb_news"
+                                width="50px"
+                                height="50px"
+                              />
+                            </td>
+                            <td>
+                              <a
+                                href="/admin/delete-new?id=<%= item.id %>"
+                                class="btn btn-sm btn-danger"
+                                >remove</a
+                              >
+                              <div
+                                onclick="handleClickEditNew('<%= item.id %>')"
+                                class="btn btn-warning btn-sm"
+                              >
+                                edit
+                              </div>
+                              <span id="id_edit_news" class="d-none"></span>
+                            </td>
+                          </tr>
+                          <% }) %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+            </div>
+            <% } else { %>
+            <div class="alert alert-danger mt-3" role="alert">
+              <h4>Bạn không có quyền truy cập vào nội dung này !!</h4>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/sidebar.js"></script>
+</html>

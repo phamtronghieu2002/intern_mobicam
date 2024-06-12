@@ -1,0 +1,85 @@
+/* mobile */
+@media (max-width: 768px) {
+
+
+  .policy_content-img {
+    width: 350px !important;
+  }
+
+  
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .show-on-mobile {
+    display: block !important;
+  }
+
+  .wrapper header .header-bottom {
+    background-color: var(--primary-color) !important;
+  }
+  .wrapper header .header-bottom .action i {
+    color: white !important;
+  }
+  .wrapper section.hero-section {
+    margin-top: 54px;
+  }
+  .wrapper section.hero-section .hero-video {
+    height: 40vh;
+  }
+
+  .wrapper section.hero-section .hero-content h1 {
+    font-size: 1.3rem;
+  }
+  .wrapper section.hero-section .hero-content h4 {
+    font-size: 1.1rem;
+    word-spacing: 1.5;
+  }
+
+  .wrapper section.method_section .information h4 {
+    text-align: center;
+  }
+  .wrapper section.method_section .information h3 {
+    text-align: center;
+  }
+  .wrapper section.method_section .information .dot_method {
+    display: block !important;
+  }
+  .wrapper section.method_section .method_image {
+    width: 100%;
+  }
+  .wrapper section.method_section .information {
+        margin-top: 20px;
+  }
+
+  .wrapper section.the-best-feture-section .item {
+      display: flex;
+      gap:15px;
+  }
+  .wrapper section.the-best-feture-section .item_title{
+    text-align: left;
+  }
+  .wrapper section.the-best-feture-section .item_desc {
+        font-size: 0.7rem;
+        padding-bottom: 5px;
+  }
+  .wrapper section.aboutus .container article  p {
+    font-size: 0.8rem;
+  }
+
+  .wrapper section.benifit .right-content{
+            padding-left:12px !important;
+  }
+  .wrapper section.benifit .left-content{
+    align-items: center;
+  }
+
+}
+/* tab let and mobile */
+@media (max-width: 1024px) {
+  .hide-on-tablet-mobile {
+    display: none !important;
+  }
+}
+/* tablet */
+@media (min-width: 739px) and (max-width: 1023px) {
+}
