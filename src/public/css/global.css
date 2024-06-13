@@ -13,24 +13,6 @@ html{
 
 
 
-
-.wrapper_dot{
-    font-size: 1rem;
-    height: 0.59rem;
-    width: 88px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 12px;
-    border-radius: 8px;
-
-    position: relative;
-    background: rgba(30 111 249 / 18%);
-    color: var(--blue-color);
-}
-
-
 @-webkit-keyframes MOVE-BG {
 	from {
 			  left: 0;
@@ -51,6 +33,32 @@ html{
         top: 0;
       }
   }
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+   
+  }
+  
+  /*  */
+.wrapper_dot{
+    font-size: 1rem;
+    height: 0.59rem;
+    width: 88px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    border-radius: 8px;
+
+    position: relative;
+    background: rgba(30 111 249 / 18%);
+    color: var(--blue-color);
+}
+
+
+
 .wrapper_dot .dot{
    
     position: absolute;
@@ -75,7 +83,7 @@ html{
 .cursor-pointer{
   cursor: pointer;
 }
-
+/* over lay */
 #overlay {
   left: 0;
   top: 0;
@@ -117,12 +125,6 @@ td img{
   width: 300px;
   height: 150px;
   object-fit: contain;
-}
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
- 
 }
 
  .dashboard .right-content{

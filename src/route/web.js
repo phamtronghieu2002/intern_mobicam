@@ -72,7 +72,7 @@ router.put("/admin/update-product/:id", adminController.handleUpdateProductById)
   router.get("/admin/dashboard/news", veryfyUser, adminController.handleRenderDashboardNews);
   //check login
 
-
+  
   
   router.post("/admin/checklogin", async (req, res) => {
     const { username, password } = req.body;
@@ -89,6 +89,18 @@ router.put("/admin/update-product/:id", adminController.handleUpdateProductById)
     }
   });
 
+  router.get("/category/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+      const categories = await categoryService.getAllCategoryAndProduct();
+      const category = categories.find((item) => item.id == id
+      );
+      return res.status(200).json(category);
+    } catch (error) {
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+  );
   app.use(router);
 };
 

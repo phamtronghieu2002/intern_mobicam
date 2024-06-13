@@ -1,12 +1,22 @@
 /* mobile */
 @media (max-width: 768px) {
+  .goog-te-combo {
+    width: 70px;
+  }
 
-
+  .skiptranslate {
+    position: absolute;
+    right: -2px;
+    top: 11px;
+  }
+  .wrapper section.the-best-feture-section
+  {
+    padding-bottom:550px;
+  }
   .policy_content-img {
     width: 350px !important;
   }
 
-  
   .hide-on-mobile {
     display: none !important;
   }
@@ -48,30 +58,32 @@
     width: 100%;
   }
   .wrapper section.method_section .information {
-        margin-top: 20px;
+    margin-top: 20px;
   }
 
   .wrapper section.the-best-feture-section .item {
-      display: flex;
-      gap:15px;
+    display: flex;
+    gap: 15px;
   }
-  .wrapper section.the-best-feture-section .item_title{
+  .wrapper section.the-best-feture-section .item_title {
     text-align: left;
   }
   .wrapper section.the-best-feture-section .item_desc {
-        font-size: 0.7rem;
-        padding-bottom: 5px;
+    font-size: 0.7rem;
+    padding-bottom: 5px;
   }
-  .wrapper section.aboutus .container article  p {
+  .wrapper section.aboutus .container article p {
     font-size: 0.8rem;
   }
 
-  .wrapper section.benifit .right-content{
-            padding-left:12px !important;
+  .wrapper section.benifit .right-content {
+    padding-left: 12px !important;
   }
-  .wrapper section.benifit .left-content{
+  .wrapper section.benifit .left-content {
     align-items: center;
   }
+
+
 
 }
 /* tab let and mobile */
@@ -79,7 +91,29 @@
   .hide-on-tablet-mobile {
     display: none !important;
   }
+  .wrapper section.category .tab_btns_horizal .nav-item:hover::before {
+    transform: scale(0,0);
+  }
+  .wrapper section.category .nav-item.active::before {
+    transform: scale(0,0);
+  }
+  .wrapper section.category .tab_btns_horizal .nav-item{
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+
+  section.aboutus .inner {
+    padding-right:  20px !important;
+    padding-left: 20px !important;
+  }
 }
 /* tablet */
-@media (min-width: 739px) and (max-width: 1023px) {
+@media (min-width: 739px) and (max-width: 900px) {
+  header .header-top span{
+    font-size: 0.8rem;
+  }
+
+  header .header_navigation a {
+    font-size: 0.8rem;
+  }
 }

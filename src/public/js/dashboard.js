@@ -1,23 +1,6 @@
+let converter = new showdown.Converter();
 let overlay = document.getElementById("overlay");
-let imgInp = document.getElementById("image_news");
-let blah_news = document.getElementById("preview_news");
-
-const markdownFormNews = document.getElementById("markdownFormNews");
-const markdownFormProduct = document.getElementById("markdownFormProduct");
-
-
-
-const tab_editProduct = document.getElementById("nav-editProduct-tab");
-const tab_addProduct = document.getElementById("nav-addProduct-tab");
-const parentContentProduct = document.getElementById("nav-addProduct");
-
-const tab_editNews = document.getElementById("nav-editNews-tab");
-const tab_addNews = document.getElementById("nav-addNews-tab");
-const parentContentNews = document.getElementById("nav-addNews");
-
-
-let imgInpProduct = document.getElementById("image_product");
-let blah_product = document.getElementById("preview_product");
+let title = document.getElementById("title");
 
 let btn_close = document.querySelector(".btn-close");
 btn_close.classList.add("d-none");
@@ -29,43 +12,23 @@ let easyMDE_product = new EasyMDE({
   element: document.getElementById("markdown_product"),
 });
 
-const hanldeChangeImage = () => {
-  if (imgInp) {
-    imgInp.onchange = (evt) => {
-      const [file] = imgInp.files;
-      if (file) {
-        blah_news.src = URL.createObjectURL(file);
-      }
-    };
-  }
-  if (imgInpProduct) {
-    imgInpProduct.onchange = (evt) => {
-      const [file] = imgInpProduct.files;
-      if (file) {
-        blah_product.src = URL.createObjectURL(file);
-      }
-    };
-  }
-};
+//news
+let imgInp = document.getElementById("image_news");
+let blah_news = document.getElementById("preview_news");
+const markdownFormNews = document.getElementById("markdownFormNews");
 
-hanldeChangeImage();
+const tab_editNews = document.getElementById("nav-editNews-tab");
+const tab_addNews = document.getElementById("nav-addNews-tab");
+const parentContentNews = document.getElementById("nav-addNews");
 
-let title = document.getElementById("title");
+
 let fileInputNews = document.getElementById("image_news");
 let btnEditNews = document.querySelector(".editNews");
 let btnAddNews = document.querySelector(".addNews");
 let btnCancelNews = document.querySelector(".cancelNews");
 let id_edit_news = document.getElementById("id_edit_news");
 
-let nameProduct = document.getElementById("name");
-let fileInputProduct = document.getElementById("image_product");
-let btnEditProduct = document.querySelector(".editProduct");
-let btnAddProduct = document.querySelector(".addProduct");
-let btnCancelProduct = document.querySelector(".cancelProduct");
-let id_edit_product = document.getElementById("id_edit_product");
 
-let categories = document.getElementById("category_product");
-let converter = new showdown.Converter();
 
 const handleAddNew = async () => {
   try {
@@ -175,6 +138,28 @@ const handleCancelEdit = () => {
     markdownFormNews.classList.add("modal_absolute_content");
   
 };
+
+// product
+let nameProduct = document.getElementById("name");
+let fileInputProduct = document.getElementById("image_product");
+let btnEditProduct = document.querySelector(".editProduct");
+let btnAddProduct = document.querySelector(".addProduct");
+let btnCancelProduct = document.querySelector(".cancelProduct");
+let id_edit_product = document.getElementById("id_edit_product");
+let imgInpProduct = document.getElementById("image_product");
+let blah_product = document.getElementById("preview_product");
+
+const markdownFormProduct = document.getElementById("markdownFormProduct");
+
+
+const tab_editProduct = document.getElementById("nav-editProduct-tab");
+const tab_addProduct = document.getElementById("nav-addProduct-tab");
+const parentContentProduct = document.getElementById("nav-addProduct");
+
+
+let categories = document.getElementById("category_product");
+
+
 
 const handleCancelEditProduct = () => {
 
@@ -290,6 +275,43 @@ const handleEditProduct = async () => {
     console.log(error);
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const hanldeChangeImage = () => {
+  if (imgInp) {
+    imgInp.onchange = (evt) => {
+      const [file] = imgInp.files;
+      if (file) {
+        blah_news.src = URL.createObjectURL(file);
+      }
+    };
+  }
+  if (imgInpProduct) {
+    imgInpProduct.onchange = (evt) => {
+      const [file] = imgInpProduct.files;
+      if (file) {
+        blah_product.src = URL.createObjectURL(file);
+      }
+    };
+  }
+};
+
+hanldeChangeImage();
+
+
+
 
 markdownFormNews?.addEventListener("submit", function (e) {
   e.preventDefault();

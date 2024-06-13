@@ -1,9 +1,11 @@
 $(document).ready(function () {
+  //carousel certificert
   $(".owl-carousel").owlCarousel({
     loop: true,
     margin: 0,
     responsiveClass: true,
     dots: true,
+    autoplay: true,
     responsive: {
       0: {
         items: 1,
@@ -21,11 +23,12 @@ $(document).ready(function () {
     },
   });
 
+  //carousel product
+
   //customize select language ui
   setTimeout(() => {
-    $(".goog-te-combo").addClass("form-select");
     $(".goog-te-combo option:first-child").remove();
-  }, 500);
+  }, 800);
 
   //handle toogle menu
   $(".btn_bar").click(function () {
@@ -58,30 +61,44 @@ document
     });
   });
 
+//check with screen
+const screenWidth = window.innerWidth;
+const handleClickCategoriesTabResponsive = async (event, catid) => {
+  if (screenWidth < 768) {
+    const res = await axios.get(`/category/${catid}`);
+    const products = res.data.products;
+    const content_modal_product = document.querySelector(".carousel-inner");
+
+    let htmlContent = "";
+    // Không cần tạo productItem ở đây nữa
+    for (let i = 0; i < products.length; i++) {
+      active= i === 0 ? "active" : "";
+      htmlContent += `
+      <div class="carousel-item ${active}">
+      <div class="product-item">
+      <img
+      style="width: 250px; margin: 0 auto;"
+      src="${products[i].productimg}"
+      alt=""
+      class="product-thumb"
+    />
+    <h3 class="product-name text-primary text-center">${products[i].productname}</h3>
+    <div class="product-desc mt-3">
+      ${products[i].productdesc}
+    </div>
+    </div>
+    </div>
+      `;
+    }
+    console.log("htmlContent", htmlContent);
+
+    content_modal_product.innerHTML = `${htmlContent}`;
+  }
+};
+
 let defaultTabCat = document.getElementById("defaultOpenCat");
 if (defaultTabCat) {
   defaultTabCat.click();
-}
-function hanndleOpenTabCat(evt, catid) {
-  // Declare all variables
-  let i, tabcontent, tablinks;
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tab-content");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("nav-item");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  let contentActive = document.getElementById(catid);
-
-  contentActive.style.display = "block";
-  evt.currentTarget.className += " active";
 }
 
 let defaultTabProduct = document.getElementsByClassName("defaultOpenProduct");
@@ -106,7 +123,7 @@ function hanndleOpenTabProduct(evt, productid, catid) {
   // Get all elements with class="tablinks" and remove the class "active"
   tablinks = document.getElementsByClassName(`cat_${catid}`);
   tabProduct = document.getElementsByClassName(`name-product_${catid}`);
-  console.log("tabProduct", tabProduct);
+
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].style.display = "none";
   }
@@ -137,10 +154,11 @@ function hanndleOpenTabCat(evt, catid) {
   }
 
   // Show the current tab, and add an "active" class to the button that opened the tab
-  let contentActive = document.getElementById(catid);
+  let contentActive = document.getElementById(`cat_${catid}`);
   console.log("contentActive", contentActive);
   contentActive.style.display = "block";
   evt.currentTarget.className += " active";
+  handleClickCategoriesTabResponsive(evt, catid);
 }
 
 const handleClickDetailCertification = (event) => {
@@ -188,7 +206,7 @@ counterUp(customer, 1500);
 counterUp(user, 5000);
 counterUp(viehical, 20000);
 
-// benifit item
+// handle render  benifit item
 const benifitItems = [
   {
     title: "HIỆU QUẢ",
@@ -226,13 +244,12 @@ const benifitItems = [
 
 const right_content = document.querySelector(".right-content");
 
-
 benifitItems.forEach((item) => {
   const benifitItem = document.createElement("div");
 
   benifitItem.classList.add("benifit-item", "mb-3");
   benifitItem.innerHTML = `
-  <img src="${item.thumb}" alt="" class="d-none">
+  <img src="${item.thumb}" alt="mobicam_lợi ích của khách hàng" class="d-none">
   <div class="benifit-icon">
     <i class="fas ${item.icon}"></i>
   </div>
@@ -244,8 +261,10 @@ benifitItems.forEach((item) => {
   </div>
   `;
   benifitItem.addEventListener("mouseover", function () {
-   let imgThumbHover= benifitItem.querySelector("img").getAttribute("src");
-   let main_img_content_benifit= document.querySelector(".main_img_content_benifit");
+    let imgThumbHover = benifitItem.querySelector("img").getAttribute("src");
+    let main_img_content_benifit = document.querySelector(
+      ".main_img_content_benifit"
+    );
     main_img_content_benifit.setAttribute("src", imgThumbHover);
   });
   right_content.appendChild(benifitItem);
