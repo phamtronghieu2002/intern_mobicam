@@ -104,7 +104,7 @@ const bestFeaturesItems = [
       content:
         "Sản phẩm đáp ứng được mục đích giám sát của doanh nghiệp. Nâng cao chất lượng dịch vụ, tạo ra lợi thế cạnh tranh để thúc đẩy doanh thu và đem lợi nhuận cao.",
       thumb:
-        "https://mobicam.vn/public/uploads/files/benefit/1654871523_6fd85dfac7839558a03b.png",
+        "/images/benifit/1.png",
     },
     {
       title: "TIẾT KIỆM",
@@ -112,7 +112,7 @@ const bestFeaturesItems = [
       content:
         "Thiết bị được tích hợp nhiều tính năng công nghệ mới, hoạt động ổn định, bền bỉ, tiết kiệm thời gian và chi phí đầu tư nhiều lần. Từ đó, nâng cao năng lực quản lý và tối ưu chi phí vận hành.",
       thumb:
-        "https://mobicam.vn/public/uploads/files/benefit/1655959585_3f81e0e54e10b59eedfb.png",
+        "/images/benifit/2.png",
     },
     {
       title: "AN TOÀN",
@@ -120,7 +120,7 @@ const bestFeaturesItems = [
       content:
         "Thiết bị được tích hợp nhiều tính năng công nghệ mới, hoạt động ổn định, bền bỉ, tiết kiệm thời gian và chi phí đầu tư nhiều lần. Từ đó, nâng cao năng lực quản lý và tối ưu chi phí vận hành.",
       thumb:
-        "https://mobicam.vn/public/uploads/files/benefit/1654871509_ed8a2876a28a44c0bf72.png",
+        "/images/benifit/3.png",
     },
     {
       title: "Linh Hoạt",
@@ -128,7 +128,7 @@ const bestFeaturesItems = [
       content:
         "Thiết bị được tích hợp nhiều tính năng công nghệ mới, hoạt động ổn định, bền bỉ, tiết kiệm thời gian và chi phí đầu tư nhiều lần. Từ đó, nâng cao năng lực quản lý và tối ưu chi phí vận hành.",
       thumb:
-        "https://mobicam.vn/public/uploads/files/benefit/1655959639_d41bbd149622c6b7a95e.png",
+        "/images/benifit/4.png",
     },
   ];
   
@@ -136,19 +136,19 @@ const bestFeaturesItems = [
   const certificertItems=[
     {
         name:"Giấy chứng nhận hợp quy",
-        thumb:"https://mobicam.vn/uploads/files/policy/1663137502_9e76b1d6c9aefa94b2a1.png"
+        thumb:"/images/certificert/1.png"
     },
     {
         name:"Giấy chứng nhận hợp quy",
-        thumb:"https://mobicam.vn/uploads/files/policy/1663137502_9e76b1d6c9aefa94b2a1.png"
+        thumb:"/images/certificert/2.png"
     },
     {
         name:"Giấy chứng nhận hợp quy",
-        thumb:"https://mobicam.vn/uploads/files/policy/1663137502_9e76b1d6c9aefa94b2a1.png"
+        thumb:"/images/certificert/1.png"
     },
     {
         name:"Giấy chứng nhận hợp quy",
-        thumb:"https://mobicam.vn/uploads/files/policy/1663137502_9e76b1d6c9aefa94b2a1.png"
+        thumb:"/images/certificert/4.png"
     }
   ]
   

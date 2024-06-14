@@ -16,9 +16,9 @@ $(document).ready(function () {
   menus.each(function () {
 
     const menu_children = $(this).children(".sub-menu");
-   
+    const chevon = $(this).children(".icon_chevon");
     const typeMenu= $(this).attr("type");
-    console.log("typeMenu", typeMenu);
+  
     if(typeMenu === mainPageName){
       menu_children.slideToggle();
 
@@ -27,9 +27,15 @@ $(document).ready(function () {
 
       sub_menu_item.each(function(){
         const type_sub_menu = $(this).attr("type");
-        console.log("type_sub_menu", type_sub_menu);
+ 
         if(type_sub_menu === subPageName){
           $(this).addClass("active");
+          
+       chevon.toggleClass("fa-chevron-left");
+       chevon.toggleClass("fa-chevron-down");
+       
+          
+         
         }
       });
   
@@ -47,8 +53,8 @@ $(document).ready(function () {
        $(this).toggleClass("active");    
         
 
-      $(this).children(".icon_chevon").toggleClass("fa-chevron-left");
-      $(this).children(".icon_chevon").toggleClass("fa-chevron-down");
+       chevon.toggleClass("fa-chevron-left");
+       chevon.toggleClass("fa-chevron-down");
     });
   });
   

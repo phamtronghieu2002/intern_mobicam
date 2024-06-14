@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
   //carousel certificert
   $(".owl-carousel").owlCarousel({
@@ -7,6 +5,10 @@ $(document).ready(function () {
     margin: 0,
     responsiveClass: true,
     dots: true,
+    navText: [
+      "<i class='fa fa-chevron-left'></i>",
+      "<i class='fa fa-chevron-right'></i>",
+    ],
     // autoplay: true,
     responsive: {
       0: {
@@ -26,35 +28,39 @@ $(document).ready(function () {
   });
 
   //customize select language ui
+  var selectElement;
   setTimeout(() => {
     $(".goog-te-combo option:first-child").remove();
-   
-  }, 800);
-  setTimeout(() => {
-    $(".skiptranslate")
-      .contents()
-      .filter(function () {
-        return (
-          this.nodeType === Node.TEXT_NODE &&
-          this.nodeValue.includes("Được hỗ trợ bởi")
-        );
-      })
-      .remove();
-    $(".skiptranslate a")
-      .contents()
-      .filter(function () {
-        return (
-          this.nodeType === Node.TEXT_NODE && this.nodeValue.includes("Dịch")
-        );
-      })
-      .remove();
-    //handle toogle menu
-    $(".btn_bar").click(function () {
-      $(".btn_bar").toggleClass("fa-xmark");
-      $(".btn_bar").toggleClass("fa-bars");
-      $(".menu-responsive").toggleClass("show-on-mobile");
-    });
-  }, 400);
+    selectElement = document.querySelector(".goog-te-combo");
+  }, 1000);
+
+  const viLangBtn = $(".change-lang .lang-vi");
+
+  viLangBtn.click(function () {
+    var optionToSelect = selectElement.querySelector('option[value="vi"]');
+    selectElement.value = optionToSelect.value;
+    var event = new Event("change");
+    selectElement.dispatchEvent(event);
+    enLangBtn.toggleClass("d-none");
+    viLangBtn.toggleClass("d-none");
+  });
+
+  const enLangBtn = $(".change-lang .lang-en");
+  enLangBtn.click(function () {
+    var optionToSelect = selectElement.querySelector('option[value="en"]');
+    selectElement.value = optionToSelect.value;
+    var event = new Event("change");
+    selectElement.dispatchEvent(event);
+    enLangBtn.toggleClass("d-none");
+    viLangBtn.toggleClass("d-none");
+  });
+
+  // handle open menu reponsive
+  $(".btn_bar").click(function () {
+    $(".btn_bar").toggleClass("fa-xmark");
+    $(".btn_bar").toggleClass("fa-bars");
+    $(".menu-responsive").toggleClass("show-on-mobile");
+  });
 });
 
 const checkIsMobileAndTabletWidth = () => {
@@ -332,3 +338,5 @@ certificertItems.forEach((certificert) => {
   certificertItem?.addEventListener("click", handleClickDetailCertification);
   certificert_content?.appendChild(certificertItem);
 });
+
+//

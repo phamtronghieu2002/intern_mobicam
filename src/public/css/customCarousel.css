@@ -9,7 +9,6 @@
 .owl-carousel .owl-nav button.owl-prev {
   position: absolute;
   cursor: pointer;
-  left: -15px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--white-color);
@@ -19,8 +18,9 @@
   height: 35px;
   display: flex !important;
   justify-content: center;
-  /* align-items: center; */
-  font-size: 2rem;
+  align-items: center;
+  left: -16px;
+  font-size: 1.2rem;
   line-height: 1;
   z-index: 2;
   border-radius: 50%;
@@ -51,8 +51,9 @@
   height: 35px;
   display: flex !important;
   justify-content: center;
-  right: -15px;
-  font-size: 2rem;
+  align-items: center;
+  right: -16px;
+  font-size: 1.2rem;
   line-height: 1;
   z-index: 2;
   border-radius: 50%;
@@ -83,4 +84,23 @@
 .owl-nav .owl-prev span{
   margin-top: -2px;
   margin-left: 0px;
+}
+
+.owl-carousel  span {
+  width:60px !important;
+  height:3px !important;
+  margin:5px 7px;
+  background: #0a6cff63;
+  display:block;
+
+
+}
+.owl-carousel .active span {
+  width:60px !important;
+  height:3px !important;
+  margin:5px 7px;
+  background: var(--primary-color) !important;
+  display:block;
+
+
 }

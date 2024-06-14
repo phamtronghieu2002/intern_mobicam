@@ -1,18 +1,7 @@
 /* mobile */
 @media (max-width: 768px) {
-  .goog-te-combo {
-    width: 73px;
-    height: 30px;
-    background-size: 9px 12px;
-  }
 
-  .skiptranslate {
-    position: absolute;
-    right: 33px;
-    top: 14px;
 
-   
-  }
    section.the-best-feture-section
   {
     padding-bottom:550px;
@@ -107,6 +96,9 @@
 
   .experience_group{
     padding-left: 10px;
+  }
+  section.category .tab_btns_horizal {
+    box-shadow: none;
   }
 }
 /* tab let and mobile */
