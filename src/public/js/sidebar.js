@@ -1,23 +1,52 @@
 //jquery
 $(document).ready(function () {
-  console.log("hello");
+
 
   const menus = $(".menu-item");
+  const currentPath = window.location.pathname.substring(1);
+
+  // Lấy "page"
+  const parts = currentPath.split('/'); // Tách chuỗi thành mảng
+  const mainPageName = parts[parts.length - 2]; 
+  
+  // Lấy "product"
+  const subPageName = parts[parts.length - 1]; 
+  
 
   menus.each(function () {
-    $(this).click(() => {
 
-        $(this)
-        .children(".sub-menu")
+    const menu_children = $(this).children(".sub-menu");
+   
+    const typeMenu= $(this).attr("type");
+    console.log("typeMenu", typeMenu);
+    if(typeMenu === mainPageName){
+      menu_children.slideToggle();
+
+      const sub_menu_item =menu_children.find(".sub-menu-item");
+
+
+      sub_menu_item.each(function(){
+        const type_sub_menu = $(this).attr("type");
+        console.log("type_sub_menu", type_sub_menu);
+        if(type_sub_menu === subPageName){
+          $(this).addClass("active");
+        }
+      });
+  
+    }
+    if(subPageName !== "dashboard" && typeMenu== mainPageName){
+      $(this).toggleClass("active");    
+    }
+    $(this).click(() => {
+        menu_children
         .click(function (event) {
           event.stopPropagation();
         });
 
-      $(this).children(".sub-menu").slideToggle();
-      $(this).toggleClass("active");    
-    
+        menu_children.slideToggle();
+       $(this).toggleClass("active");    
+        
 
-        console.log($(this).children(".icon_chevon"));
       $(this).children(".icon_chevon").toggleClass("fa-chevron-left");
       $(this).children(".icon_chevon").toggleClass("fa-chevron-down");
     });
@@ -32,29 +61,5 @@ $(document).ready(function () {
 // }
 
 
-window.onload = function () {
-  
 
-};
 
-const fetchComponent=(path)=>{
-    fetch(path)
-    .then(response => response.text())
-    .then(headerContent => {
-      const wrapper = document.querySelector('#main-content');
-      wrapper.innerHTML = headerContent; 
-    });
-}
-
-const renderComponent = (page) => {
-        overlay.classList.remove("d-none");
-        switch (page) {
-            case "productpage":
-                fetchComponent("/admin/dashboard");
-                overlay.classList.add("d-none");
-                break;
-        
-            default:
-                break;
-        }
-}

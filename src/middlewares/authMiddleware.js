@@ -1,10 +1,9 @@
-import dotenv from "dotenv";
-dotenv.config();
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 
 
-export const veryfyUser = async (req, res, next) => {
+module.exports ={ veryfyUser  :async (req, res, next) => {
   const accessToken = req.cookies.accesstoken ;
   
   if (accessToken) {
@@ -23,4 +22,4 @@ export const veryfyUser = async (req, res, next) => {
   } else {
     return res.redirect("/admin");
   }
-};
+}};

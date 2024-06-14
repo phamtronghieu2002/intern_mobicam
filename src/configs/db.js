@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const db_connetion = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -14,5 +14,4 @@ const db_connetion = {
     keepAliveInitialDelay: 0,
     auth_plugin: 'mysql_native_password'
 }
-
-export default db_connetion;
+module.exports = db_connetion;

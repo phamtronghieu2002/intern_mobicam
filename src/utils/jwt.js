@@ -1,13 +1,15 @@
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-dotenv.config();
+const jwt = require('jsonwebtoken');
 
-export const create_access_token = (payload,expiresIn) => {
+require('dotenv').config();
 
-  return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn });
-}
 
-export const create_fresh_token = (payload,expiresIn) => {
 
-    return jwt.sign(payload, process.env.FRESH_TOKEN_SECRET, { expiresIn});
-  }
+module.exports = {
+  create_access_token: (payload, expiresIn) => {
+    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn });
+  },
+
+  create_fresh_token: (payload, expiresIn) => {
+    return jwt.sign(payload, process.env.FRESH_TOKEN_SECRET, { expiresIn });
+  },
+};

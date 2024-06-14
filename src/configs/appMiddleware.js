@@ -1,12 +1,16 @@
-import bodyParser from "body-parser";
-import cookieParser from "cookie-parser";
-import session from "express-session";
-import cors from "cors";
-
+// import bodyParser from "body-parser";
+// import cookieParser from "cookie-parser";
+// import session from "express-session";
+// import cors from "cors";
+// import flash from "connect-flash";
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const cors = require("cors");
 const flash = require("connect-flash");
 
-export default function appMiddleware(express, app) {
 
+const appMiddleware = (express, app) => {
 
   app.use(cors());
   app.use(bodyParser.json({ limit: "50mb" }));
@@ -22,4 +26,6 @@ export default function appMiddleware(express, app) {
     })
   );
   app.use(flash());
-}
+};
+
+module.exports = appMiddleware;

@@ -1,8 +1,6 @@
 <header>
   <div class="header-top hide-on-mobile">
-    <div
-      class="container d-flex justify-content-between aligns-item-center"
-    >
+    <div class="container d-flex justify-content-between aligns-item-center">
       <div class="contact">
         <span class="text-light">
           <i class="fa-regular fa-envelope"></i>
@@ -42,36 +40,48 @@
           <i class="btn_bar fa-solid fa-bars text-light fs-3"></i>
         </div>
         <div class="logo">
-          <img
-            class="hide-on-mobile"
-            src="https://mobicam.vn/assets/images/logoHead.png"
-            alt="mobicam_v2_logo"
-          />
-          <img
-            class="show-on-mobile d-none"
-            src="https://mobicam.vn/assets/images/mobiCam_logo.png"
-            alt="mobicam_v2_logo"
-          />
+          <a href="/" class="d-block">
+            <img
+              class="hide-on-mobile"
+              src="https://mobicam.vn/assets/images/logoHead.png"
+              alt="mobicam_logo"
+            />
+          </a>
+          <a href="/" class="d-block">
+            <img
+              class="show-on-mobile d-none"
+              src="https://mobicam.vn/assets/images/mobiCam_logo.png"
+              alt="mobicam_logo"
+            />
+          </a>
         </div>
         <nav class="hide-on-mobile">
           <ul class="d-flex gap-3">
             <li>
-              <a href="#the-best-feture-section">Tính năng</a>
+              <a
+                onclick="handleClickMenu(event)"
+                href="/#the-best-feture-section"
+                >Tính năng</a
+              >
             </li>
             <li>
-              <a href="#benifit">Lợi ích</a>
+              <a onclick="handleClickMenu(event)" href="/#benifit">Lợi ích</a>
             </li>
             <li>
-              <a href="#section-certificert">Chứng chỉ</a>
+              <a onclick="handleClickMenu(event)" href="/#section-certificert"
+                >Chứng chỉ</a
+              >
             </li>
             <li>
-              <a href="#category">Chuyên mục</a>
+              <a onclick="handleClickMenu(event)" href="/#category"
+                >Chuyên mục</a
+              >
             </li>
             <li>
-              <a href="#news">Tin tức</a>
+              <a onclick="handleClickMenu(event)" href="/#news">Tin tức</a>
             </li>
             <li>
-              <a href="#news">Hỏi đáp</a>
+              <a onclick="handleClickMenu(event)" href="/#news">Hỏi đáp</a>
             </li>
           </ul>
         </nav>
@@ -95,22 +105,22 @@
   <div class="menu-responsive d-none">
     <ul class="headerMain_menuM-list mobile_show active">
       <li>
-        <a href="#the-best-feture-section">Tính năng</a>
+        <a href="/#the-best-feture-section">Tính năng</a>
       </li>
       <li>
-        <a href="#benifit">Lợi ích</a>
+        <a href="/#benifit">Lợi ích</a>
       </li>
       <li>
-        <a href="#section-certificert">Chứng chỉ</a>
+        <a href="/#section-certificert">Chứng chỉ</a>
       </li>
       <li>
-        <a href="#category">Chuyên mục</a>
+        <a href="/#category">Chuyên mục</a>
       </li>
       <li>
-        <a href="#news">Tin tức</a>
+        <a href="/#news">Tin tức</a>
       </li>
       <li>
-        <a href="#news">Hỏi đáp</a>
+        <a href="/#news">Hỏi đáp</a>
       </li>
     </ul>
   </div>

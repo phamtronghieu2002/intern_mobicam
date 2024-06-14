@@ -10,8 +10,11 @@
 <link rel="stylesheet" href="/css/owlCarousel/owl.theme.default.min.css" />
 <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
-
-
+<link
+  rel="shortcut icon"
+  href="https://mobicam.vn/assets/images/icon_logo.png"
+  type="image/x-icon"
+/>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
@@ -26,27 +29,39 @@
   crossorigin="anonymous"
 ></script>
 
-
+<script src="/utils/data.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     VanillaTilt.init(document.querySelectorAll(".tilt-image"), {
       max: 25,
-      speed: 400
-  });
+      speed: 400,
+    });
   });
 </script>
 
-<script defer src="https://translate.google.com/translate_a/element.js?cb=initGoogleTranslate"></script>
+<script
+  defer
+  src="https://translate.google.com/translate_a/element.js?cb=initGoogleTranslate"
+></script>
 <script>
   function initGoogleTranslate() {
     new google.translate.TranslateElement(
-      { pageLanguage: 'vi' },
-      'google_translate_element'
+      { pageLanguage: "vi", includedLanguages: "vi,en,fr,es,de" },
+
+      "google_translate_element"
     );
   }
 </script>
+  <!--  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+  <!--  -->
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+</style>
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -55,6 +70,4 @@
     "description": "Bán các sản phẩm công nghệ gps chất lượng.",
     "email": " mobicam_v2_@gmail.com"
   }
-  </script>
-
-
+</script>

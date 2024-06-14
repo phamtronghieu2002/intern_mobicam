@@ -1,15 +1,19 @@
 /* mobile */
 @media (max-width: 768px) {
   .goog-te-combo {
-    width: 70px;
+    width: 73px;
+    height: 30px;
+    background-size: 9px 12px;
   }
 
   .skiptranslate {
     position: absolute;
-    right: -2px;
-    top: 11px;
+    right: 33px;
+    top: 14px;
+
+   
   }
-  .wrapper section.the-best-feture-section
+   section.the-best-feture-section
   {
     padding-bottom:550px;
   }
@@ -24,80 +28,99 @@
     display: block !important;
   }
 
-  .wrapper header .header-bottom {
+   header .header-bottom {
     background-color: var(--primary-color) !important;
   }
-  .wrapper header .header-bottom .action i {
+   header .header-bottom .action i {
     color: white !important;
   }
-  .wrapper section.hero-section {
-    margin-top: 54px;
+   section.hero-section {
+    margin-top: 33px;
   }
-  .wrapper section.hero-section .hero-video {
+   section.hero-section .hero-video {
     height: 40vh;
   }
 
-  .wrapper section.hero-section .hero-content h1 {
+   section.hero-section .hero-content h1 {
     font-size: 1.3rem;
   }
-  .wrapper section.hero-section .hero-content h4 {
+   section.hero-section .hero-content h4 {
     font-size: 1.1rem;
     word-spacing: 1.5;
   }
 
-  .wrapper section.method_section .information h4 {
+   section.method_section .information h4 {
     text-align: center;
   }
-  .wrapper section.method_section .information h3 {
+   section.method_section .information h3 {
     text-align: center;
   }
-  .wrapper section.method_section .information .dot_method {
+   section.method_section .information .dot_method {
     display: block !important;
   }
-  .wrapper section.method_section .method_image {
+   section.method_section .method_image {
     width: 100%;
   }
-  .wrapper section.method_section .information {
+   section.method_section .information {
     margin-top: 20px;
   }
 
-  .wrapper section.the-best-feture-section .item {
+   section.the-best-feture-section .item {
     display: flex;
     gap: 15px;
   }
-  .wrapper section.the-best-feture-section .item_title {
+   section.the-best-feture-section .item_title {
     text-align: left;
   }
-  .wrapper section.the-best-feture-section .item_desc {
+   section.the-best-feture-section .item_desc {
     font-size: 0.7rem;
     padding-bottom: 5px;
   }
-  .wrapper section.aboutus .container article p {
+   section.aboutus .container article p {
     font-size: 0.8rem;
   }
 
-  .wrapper section.benifit .right-content {
+   section.benifit .right-content {
     padding-left: 12px !important;
   }
-  .wrapper section.benifit .left-content {
+   section.benifit .left-content {
+    align-items: center;
+  }
+  section.benifit .right-content .information {
+    width: 100%;
+  }
+
+  section.benifit .right-content .benifit-item{
+    flex-direction: column;
     align-items: center;
   }
 
+  section.benifit .right-content .benifit-icon{
+    width: 64px;
+    height: 64px;
+  }
+  section.benifit .right-content .information h6
+  {
+    text-align: center;
+    margin-bottom: 10px;
+  }
 
-
+  .experience_group{
+    padding-left: 10px;
+  }
 }
 /* tab let and mobile */
 @media (max-width: 1024px) {
   .hide-on-tablet-mobile {
     display: none !important;
   }
-  .wrapper section.category .tab_btns_horizal .nav-item:hover::before {
+   section.category .tab_btns_horizal .nav-item:hover::before {
     transform: scale(0,0);
   }
-  .wrapper section.category .nav-item.active::before {
+   section.category .nav-item.active::before {
     transform: scale(0,0);
   }
-  .wrapper section.category .tab_btns_horizal .nav-item{
+   section.category .tab_btns_horizal .nav-item{
     justify-content: flex-start;
     margin-bottom: 10px;
   }
@@ -106,9 +129,12 @@
     padding-right:  20px !important;
     padding-left: 20px !important;
   }
+  section.method_section .list_certificate  .item{
+    margin-bottom: 5px;
+  }
 }
 /* tablet */
-@media (min-width: 739px) and (max-width: 900px) {
+@media (min-width: 739px) and (max-width: 1023px) {
   header .header-top span{
     font-size: 0.8rem;
   }
@@ -116,4 +142,5 @@
   header .header_navigation a {
     font-size: 0.8rem;
   }
+
 }

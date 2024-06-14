@@ -43,8 +43,11 @@
   padding: 5px 10px;
   padding-bottom: 7px;
 }
-.side-bar-left .main-menu.active {
-  color: var(--main-bg);
+.side-bar-left .sub-menu-item.active {
+background: #606060;;
+}
+.side-bar-left .main-menu.active{
+  
 }
 .side-bar-left .main-menu:hover {
   background-color: var(--main-bg-bl4);

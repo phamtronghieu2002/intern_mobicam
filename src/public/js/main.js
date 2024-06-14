@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
   //carousel certificert
   $(".owl-carousel").owlCarousel({
@@ -5,7 +7,7 @@ $(document).ready(function () {
     margin: 0,
     responsiveClass: true,
     dots: true,
-    autoplay: true,
+    // autoplay: true,
     responsive: {
       0: {
         items: 1,
@@ -23,48 +25,95 @@ $(document).ready(function () {
     },
   });
 
-  //carousel product
-
   //customize select language ui
   setTimeout(() => {
     $(".goog-te-combo option:first-child").remove();
+   
   }, 800);
-
-  //handle toogle menu
-  $(".btn_bar").click(function () {
-    $(".btn_bar").toggleClass("fa-xmark");
-    $(".btn_bar").toggleClass("fa-bars");
-    $(".menu-responsive").toggleClass("show-on-mobile");
-  });
-
-  // handle tab -product
+  setTimeout(() => {
+    $(".skiptranslate")
+      .contents()
+      .filter(function () {
+        return (
+          this.nodeType === Node.TEXT_NODE &&
+          this.nodeValue.includes("Được hỗ trợ bởi")
+        );
+      })
+      .remove();
+    $(".skiptranslate a")
+      .contents()
+      .filter(function () {
+        return (
+          this.nodeType === Node.TEXT_NODE && this.nodeValue.includes("Dịch")
+        );
+      })
+      .remove();
+    //handle toogle menu
+    $(".btn_bar").click(function () {
+      $(".btn_bar").toggleClass("fa-xmark");
+      $(".btn_bar").toggleClass("fa-bars");
+      $(".menu-responsive").toggleClass("show-on-mobile");
+    });
+  }, 400);
 });
+
+const checkIsMobileAndTabletWidth = () => {
+  const screenWidth = window.innerWidth;
+  if ((screenWidth < 900 && screenWidth > 739) || screenWidth < 768) {
+    return true;
+  }
+  return false;
+};
+
+const handleClickMenu = (event) => {
+  const menus = document.querySelectorAll(
+    ".wrapper header .header_navigation ul a"
+  );
+  const curentMenu = event.currentTarget;
+  menus.forEach((menu) => {
+    menu.classList.remove("active");
+  });
+  curentMenu.classList.add("active");
+};
 
 //handle scroll when click to menu
 document
-  .querySelectorAll(".wrapper header .header_navigation a")
+  .querySelectorAll(".wrapper header .header_navigation ul a")
   .forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute("href").substring(1);
+      const targetId = this.getAttribute("href").substring(2);
+      console.log(targetId);
       const targetElement = document.getElementById(targetId);
-      const offset = 100;
+      if (targetElement) {
+        e.preventDefault();
+        const offset = 100;
 
-      const elementPosition =
-        targetElement.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
+        const elementPosition =
+          targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
     });
   });
 
-//check with screen
-const screenWidth = window.innerWidth;
+//check with screen and handle when click cat tab
+
+if (checkIsMobileAndTabletWidth()) {
+  const tabCats = document.getElementsByClassName("nav-item");
+  const content_tab_product = document.getElementById("content_tab_product");
+  content_tab_product.style.display = "none";
+
+  for (let i = 0; i < tabCats.length; i++) {
+    tabCats[i].setAttribute("data-bs-toggle", "modal");
+    tabCats[i].setAttribute("data-bs-target", "#modalProductTab");
+  }
+}
 const handleClickCategoriesTabResponsive = async (event, catid) => {
-  if (screenWidth < 768) {
+  if (checkIsMobileAndTabletWidth()) {
     const res = await axios.get(`/category/${catid}`);
     const products = res.data.products;
     const content_modal_product = document.querySelector(".carousel-inner");
@@ -72,7 +121,7 @@ const handleClickCategoriesTabResponsive = async (event, catid) => {
     let htmlContent = "";
     // Không cần tạo productItem ở đây nữa
     for (let i = 0; i < products.length; i++) {
-      active= i === 0 ? "active" : "";
+      active = i === 0 ? "active" : "";
       htmlContent += `
       <div class="carousel-item ${active}">
       <div class="product-item">
@@ -83,14 +132,13 @@ const handleClickCategoriesTabResponsive = async (event, catid) => {
       class="product-thumb"
     />
     <h3 class="product-name text-primary text-center">${products[i].productname}</h3>
-    <div class="product-desc mt-3">
+    <div class="product-desc mt-5 pt-2">
       ${products[i].productdesc}
     </div>
     </div>
     </div>
       `;
     }
-    console.log("htmlContent", htmlContent);
 
     content_modal_product.innerHTML = `${htmlContent}`;
   }
@@ -98,11 +146,12 @@ const handleClickCategoriesTabResponsive = async (event, catid) => {
 
 let defaultTabCat = document.getElementById("defaultOpenCat");
 if (defaultTabCat) {
-  defaultTabCat.click();
+  if (!checkIsMobileAndTabletWidth()) {
+    defaultTabCat.click();
+  }
 }
 
 let defaultTabProduct = document.getElementsByClassName("defaultOpenProduct");
-
 if (defaultTabProduct.length > 0) {
   for (let i = 0; i < defaultTabProduct.length; i++) {
     defaultTabProduct[i].click();
@@ -155,7 +204,7 @@ function hanndleOpenTabCat(evt, catid) {
 
   // Show the current tab, and add an "active" class to the button that opened the tab
   let contentActive = document.getElementById(`cat_${catid}`);
-  console.log("contentActive", contentActive);
+
   contentActive.style.display = "block";
   evt.currentTarget.className += " active";
   handleClickCategoriesTabResponsive(evt, catid);
@@ -169,8 +218,6 @@ const handleClickDetailCertification = (event) => {
   const heading_certification =
     clickElement.querySelector("#certificert-name").innerText;
 
-  console.log("thumb_certification", thumb_certification);
-  console.log("heading_certification", heading_certification);
   const thumb_certificert_modal = document.getElementById(
     "thumb_certificert_modal"
   );
@@ -201,55 +248,21 @@ function counterUp(el, to) {
     }
   }, 1);
 }
-counterUp(year_develop, 5);
-counterUp(customer, 1500);
-counterUp(user, 5000);
-counterUp(viehical, 20000);
+if (year_develop) {
+  counterUp(year_develop, 5);
+  counterUp(customer, 1500);
+  counterUp(user, 5000);
+  counterUp(viehical, 20000);
+}
 
-// handle render  benifit item
-const benifitItems = [
-  {
-    title: "HIỆU QUẢ",
-    icon: "fa-thumbs-up",
-    content:
-      "Sản phẩm đáp ứng được mục đích giám sát của doanh nghiệp. Nâng cao chất lượng dịch vụ, tạo ra lợi thế cạnh tranh để thúc đẩy doanh thu và đem lợi nhuận cao.",
-    thumb:
-      "https://mobicam.vn/public/uploads/files/benefit/1654871523_6fd85dfac7839558a03b.png",
-  },
-  {
-    title: "TIẾT KIỆM",
-    icon: "fa-piggy-bank",
-    content:
-      "Thiết bị được tích hợp nhiều tính năng công nghệ mới, hoạt động ổn định, bền bỉ, tiết kiệm thời gian và chi phí đầu tư nhiều lần. Từ đó, nâng cao năng lực quản lý và tối ưu chi phí vận hành.",
-    thumb:
-      "https://mobicam.vn/public/uploads/files/benefit/1655959585_3f81e0e54e10b59eedfb.png",
-  },
-  {
-    title: "AN TOÀN",
-    icon: "fa-lock",
-    content:
-      "Thiết bị được tích hợp nhiều tính năng công nghệ mới, hoạt động ổn định, bền bỉ, tiết kiệm thời gian và chi phí đầu tư nhiều lần. Từ đó, nâng cao năng lực quản lý và tối ưu chi phí vận hành.",
-    thumb:
-      "https://mobicam.vn/public/uploads/files/benefit/1654871509_ed8a2876a28a44c0bf72.png",
-  },
-  {
-    title: "Linh Hoạt",
-    icon: "fa-thumbs-up ",
-    content:
-      "Thiết bị được tích hợp nhiều tính năng công nghệ mới, hoạt động ổn định, bền bỉ, tiết kiệm thời gian và chi phí đầu tư nhiều lần. Từ đó, nâng cao năng lực quản lý và tối ưu chi phí vận hành.",
-    thumb:
-      "https://mobicam.vn/public/uploads/files/benefit/1655959639_d41bbd149622c6b7a95e.png",
-  },
-];
-
+//                                             RenderItem Benefit
 const right_content = document.querySelector(".right-content");
-
 benifitItems.forEach((item) => {
   const benifitItem = document.createElement("div");
 
   benifitItem.classList.add("benifit-item", "mb-3");
   benifitItem.innerHTML = `
-  <img src="${item.thumb}" alt="mobicam_lợi ích của khách hàng" class="d-none">
+  <img src="${item.thumb}" alt="mobicam-lợi ích của khách hàng" class="d-none">
   <div class="benifit-icon">
     <i class="fas ${item.icon}"></i>
   </div>
@@ -260,12 +273,62 @@ benifitItems.forEach((item) => {
     </p>
   </div>
   `;
-  benifitItem.addEventListener("mouseover", function () {
+  benifitItem?.addEventListener("mouseover", function () {
     let imgThumbHover = benifitItem.querySelector("img").getAttribute("src");
     let main_img_content_benifit = document.querySelector(
       ".main_img_content_benifit"
     );
     main_img_content_benifit.setAttribute("src", imgThumbHover);
   });
-  right_content.appendChild(benifitItem);
+  right_content?.appendChild(benifitItem);
+});
+
+//                                              RenderItem  fetures
+const feature_content = document.querySelector(".list-best-feture .row");
+bestFeaturesItems.forEach((feature) => {
+  const featureItem = document.createElement("div");
+  featureItem.classList.add(
+    "col-lg-3",
+    "col-md-6",
+    "col-sm-12",
+    "mb-3",
+    "d-flex",
+    "justify-content-center"
+  );
+  featureItem.innerHTML = `
+  <div class="item">
+    <div class="feture-item-img">
+      ${feature.svg}
+    </div>
+    <div class="information">
+      <p class="item_title fw-bold fs-6">${feature.title}</p>
+      <p class="item_desc">
+        ${feature.desc}
+      </p>
+    </div>
+  </div>
+  `;
+  feature_content?.appendChild(featureItem);
+});
+
+//                                              Render certificert Items
+const certificert_content = document.querySelector(".list-certificate");
+
+certificertItems.forEach((certificert) => {
+  const certificertItem = document.createElement("div");
+  certificertItem.classList.add("policy_content-img");
+  certificertItem.setAttribute("data-bs-toggle", "modal");
+  certificertItem.setAttribute("data-bs-target", "#modalDetailCertificert");
+  certificertItem.innerHTML = `
+  <p id="certificert-name" class="d-none">
+    ${certificert.name}
+  </p>
+  <img
+    class="thumb-certificert"
+    src="${certificert.thumb}"
+    alt=""
+  />
+  `;
+  certificertItem?.addEventListener("click", handleClickDetailCertification);
+  certificert_content?.appendChild(certificertItem);
 });

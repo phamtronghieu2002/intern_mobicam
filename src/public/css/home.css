@@ -14,7 +14,7 @@ header .header-top {
   display: flex;
   align-items: center;
 }
-header .header-top span{
+header .header-top span {
   font-size: 0.9rem;
 }
 header .header-bottom {
@@ -55,6 +55,13 @@ header .header_navigation a:hover::before {
 header .header_navigation a:hover {
   color: var(--primary-color) !important;
 }
+header .header_navigation a.active {
+  color: var(--primary-color) !important;
+}
+header .header_navigation a.active::before {
+  width: 100%;
+  left: 0;
+}
 header .header_navigation ul {
   gap: 25px;
 }
@@ -87,6 +94,28 @@ section.hero-section {
   /* height: 650px; */
   margin-top: 80px;
 }
+
+section.hero-section .btn_dowloand{
+  position: relative;
+  padding: 8px 36px;
+  border: none;
+  outline: none;
+  background: var(--blue-color);
+  border-radius: 999px;
+  font-size: 1rem;
+  z-index: 1;
+  transition: .3s;
+}
+
+
+section.hero-section .btn_dowloand:hover{
+  box-shadow: 0 18px 17px 0 rgb(0 0 0 / 10%);
+    background: var(--yellow-color);
+    color: #333;
+
+}
+
+
 section.hero-section .hero-video {
   /* width: 100%; Chiều rộng video chiếm toàn bộ phần hero */
   height: 78vh;
@@ -125,7 +154,7 @@ section.method_section .method_image {
 section.method_section .information p {
   font-size: 0.9rem;
 }
-section.method_section .list_certificate .item {
+section.method_section .list_certificate  .item {
   background-color: var(--primary-color2);
   box-shadow: 4px 4px 4px rgb(0 0 0 / 30%);
   height: 70px;
@@ -134,13 +163,36 @@ section.method_section .list_certificate .item {
   justify-content: center;
   transition: 0.3s linear;
 }
+section.method_section .list_certificate  .col-lg-3:first-child .item{
+  background-color: var(--primary-color);
+}
 
 section.method_section .list_certificate .item:hover {
   transform: scale(1.05) translateY(-8px);
   background-color: var(--primary-color);
 }
-section.method_section .list_certificate .item svg {
+
+section.method_section .list_certificate .item .svg_iso {
   height: 44px;
+
+}
+section.method_section .list_certificate .item .cls-2{
+    fill: var(--primary-color);
+}
+section.method_section .list_certificate .item .cls-1{
+  fill: var(--primary-color);
+}
+section.method_section .list_certificate  .col-lg-3:first-child .item .cls-2{
+  fill: var(--primary-color2);
+}
+section.method_section .list_certificate  .col-lg-3:first-child .item .cls-1{
+  fill: var(--primary-color2);
+}
+section.method_section .list_certificate .item:hover .cls-2{
+  fill: var(--primary-color2);
+}
+section.method_section .list_certificate .item:hover .cls-1{
+  fill: var(--primary-color2);
 }
 /* best feture section */
 section.the-best-feture-section {
@@ -177,6 +229,12 @@ section.the-best-feture-section .feture-item-img {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+}
+section.the-best-feture-section .information{
+  flex: 1;
+}
+section.the-best-feture-section .feture-item-img svg{
+  width: 36px;
 }
 section.the-best-feture-section .item_title {
   text-align: center;
@@ -644,6 +702,7 @@ section.news .item {
 }
 .footer_wrappper a {
   color: white;
+  text-decoration: none;
 }
 .footer_follow-item img {
   border-radius: 50%;
@@ -683,9 +742,11 @@ section.news .item {
 }
 .skiptranslate {
   position: absolute;
-  right: 6px;
+  right: 35px;
   top: 15px;
 }
 .skiptranslate iframe {
   display: none;
 }
+
+/*  */

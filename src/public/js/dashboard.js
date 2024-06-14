@@ -1,18 +1,37 @@
 let converter = new showdown.Converter();
 let overlay = document.getElementById("overlay");
 let title = document.getElementById("title");
-
 let btn_close = document.querySelector(".btn-close");
-btn_close.classList.add("d-none");
+btn_close?.classList.add("d-none");
+//khởi tạo markdown editor cho news
 let easyMDE = new EasyMDE({
   element: document.getElementById("markdown"),
 });
-
+//khởi tạo markdown editor cho product
 let easyMDE_product = new EasyMDE({
   element: document.getElementById("markdown_product"),
 });
 
-//news
+//thêm sự kiện để  đếm số từ của markdown
+easyMDE_product.codemirror?.on("change", function () {
+  updateWordCount();
+});
+
+// Hàm cập nhật số lượng từ
+function updateWordCount() {
+  const text = easyMDE_product.value(); // Lấy nội dung markdown
+  const words = text.trim().split(/\s+/).length; // Tách các từ và tính số lượng
+
+  console.log(words);
+}
+
+const reLoadPage = () => {
+  setTimeout(function () {
+    window.location.reload();
+  }, 500);
+};
+
+//==============================================news==============
 let imgInp = document.getElementById("image_news");
 let blah_news = document.getElementById("preview_news");
 const markdownFormNews = document.getElementById("markdownFormNews");
@@ -21,14 +40,11 @@ const tab_editNews = document.getElementById("nav-editNews-tab");
 const tab_addNews = document.getElementById("nav-addNews-tab");
 const parentContentNews = document.getElementById("nav-addNews");
 
-
 let fileInputNews = document.getElementById("image_news");
 let btnEditNews = document.querySelector(".editNews");
 let btnAddNews = document.querySelector(".addNews");
 let btnCancelNews = document.querySelector(".cancelNews");
 let id_edit_news = document.getElementById("id_edit_news");
-
-
 
 const handleAddNew = async () => {
   try {
@@ -55,7 +71,8 @@ const handleAddNew = async () => {
 
     if (result.data) {
       overlay.classList.add("d-none");
-      window.location.reload();
+      toastr.success("Thêm tin tức thành công", "Thông báo");
+      reLoadPage();
     }
   } catch (err) {
     console.log(err);
@@ -90,8 +107,6 @@ const handleClickEditNew = (id) => {
   markdownFormNews.classList.add("d-block");
 };
 
-
-
 const handleEditNews = async () => {
   try {
     overlay.classList.remove("d-none");
@@ -115,14 +130,15 @@ const handleEditNews = async () => {
     });
     if (res.data) {
       overlay.classList.add("d-none");
-      window.location.reload();
+      toastr.success("Cập nhật tin tức thành công", "Thông báo");
+      reLoadPage();
     }
   } catch (error) {
+    toastr.error(error, "Thông báo lỗi");
     console.log(error);
   }
 };
 const handleCancelEdit = () => {
-
   overlay.classList.remove("d-block");
   overlay.classList.add("d-none");
   btnEditNews.classList.add("d-none");
@@ -131,15 +147,15 @@ const handleCancelEdit = () => {
   title.value = "";
   easyMDE.value("");
 
-  blah_news.src = "https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg";
-    parentContentNews.appendChild(markdownFormNews);
-    markdownFormNews.classList.remove("d-block");
-    markdownFormNews.classList.add("d-none");
-    markdownFormNews.classList.add("modal_absolute_content");
-  
+  blah_news.src =
+    "https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg";
+  parentContentNews.appendChild(markdownFormNews);
+  markdownFormNews.classList.remove("d-block");
+  markdownFormNews.classList.add("d-none");
+  markdownFormNews.classList.add("modal_absolute_content");
 };
 
-// product
+//==================================================product
 let nameProduct = document.getElementById("name");
 let fileInputProduct = document.getElementById("image_product");
 let btnEditProduct = document.querySelector(".editProduct");
@@ -151,33 +167,28 @@ let blah_product = document.getElementById("preview_product");
 
 const markdownFormProduct = document.getElementById("markdownFormProduct");
 
-
 const tab_editProduct = document.getElementById("nav-editProduct-tab");
 const tab_addProduct = document.getElementById("nav-addProduct-tab");
 const parentContentProduct = document.getElementById("nav-addProduct");
 
-
 let categories = document.getElementById("category_product");
 
-
-
 const handleCancelEditProduct = () => {
-
   overlay.classList.remove("d-block");
   overlay.classList.add("d-none");
   btnEditProduct.classList.add("d-none");
   btnAddProduct.classList.remove("d-none");
+  btn_close?.classList.add("d-none");
   // btnCancelProduct.classList.add("d-none");
   nameProduct.value = "";
   easyMDE_product.value("");
-  blah_product.src ="https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg";
+  blah_product.src =
+    "https://www.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-600nw-1037719192.jpg";
   parentContentProduct.appendChild(markdownFormProduct);
   markdownFormProduct.classList.remove("d-block");
   markdownFormProduct.classList.add("d-none");
   markdownFormProduct.classList.add("modal_absolute_content");
-
 };
-
 
 const handleAddProduct = async () => {
   try {
@@ -207,15 +218,16 @@ const handleAddProduct = async () => {
 
     if (result.data) {
       overlay.classList.add("d-none");
-      window.location.reload();
+      toastr.success("thêm sản phẩm thành công !!", "Thông báo");
+      reLoadPage();
     }
   } catch (err) {
+    toastr.error("thêm sản phẩm thất bại !!", "Thông báo");
     console.log(err);
   }
 };
 
 const handleClickEditProduct = (id) => {
-
   id_edit_product.innerText = id;
   btnEditProduct.classList.remove("d-none");
   btnAddProduct.classList.add("d-none");
@@ -230,7 +242,7 @@ const handleClickEditProduct = (id) => {
   nameProduct.value = nameEdit;
 
   easyMDE_product.value(markdown);
-  
+
   categories.value = document.getElementById(`catProduct${id}`).innerText;
   blah_product.src = imgEdit;
   btn_close.classList.remove("d-none");
@@ -269,25 +281,14 @@ const handleEditProduct = async () => {
     });
     if (res.data) {
       overlay.classList.add("d-none");
-      window.location.reload();
+      toastr.success("Cập nhật sản phẩm thành công", "Thông báo");
+      reLoadPage();
     }
   } catch (error) {
+    toastr.error(error, "Thông báo");
     console.log(error);
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const hanldeChangeImage = () => {
   if (imgInp) {
@@ -309,9 +310,6 @@ const hanldeChangeImage = () => {
 };
 
 hanldeChangeImage();
-
-
-
 
 markdownFormNews?.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -361,6 +359,3 @@ document.addEventListener("DOMContentLoaded", function () {
     markdownFormProduct.classList.add("d-block");
   });
 });
-
-
-

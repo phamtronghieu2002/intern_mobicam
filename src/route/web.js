@@ -1,16 +1,14 @@
-import express from "express";
+const express = require("express");
+const authService = require("..//services/authService.js");
+const categoryService = require("../services/categoriesService.js");
+const homeController = require("..//controllers/homeController.js");
+const adminController = require("..//controllers/adminController.js");
+const { veryfyUser } = require("../middlewares/authMiddleware.js");
+const { uploadImage } = require("../middlewares/uploadImage.js");
+
 const router = express.Router();
 
-import * as authService from "..//service/authService";
-import * as newService from "../service/newService";
-import * as categoryService from "../service/categoriesService";
-import * as productService from "../service/productService";
 
-
-import * as homeController from "..//controllers/homeController";
-import * as adminController from "..//controllers/adminController";
-import { veryfyUser } from "../middlewares/authMiddleware";
-import { uploadImage } from "../middlewares/uploadImage";
 
 const InitApiRoute = (app) => {
   app.use(function (req, res, next) {
@@ -67,9 +65,9 @@ router.put("/admin/update-product/:id", adminController.handleUpdateProductById)
 
 
 
-  router.get("/admin/dashboard/product", veryfyUser,adminController.handleRenderDashboardProduct);
+  router.get("/admin/dashboard/page/product", veryfyUser,adminController.handleRenderDashboardProduct);
 
-  router.get("/admin/dashboard/news", veryfyUser, adminController.handleRenderDashboardNews);
+  router.get("/admin/dashboard/page/news", veryfyUser, adminController.handleRenderDashboardNews);
   //check login
 
   
@@ -101,7 +99,12 @@ router.put("/admin/update-product/:id", adminController.handleUpdateProductById)
     }
   }
   );
+
+  router.get("/admin/logout", (req, res) => {
+    res.clearCookie("accesstoken");
+    return res.redirect("/admin/dashboard");
+  });
   app.use(router);
 };
 
-export { InitApiRoute };
+module.exports  ={ InitApiRoute };
