@@ -33,6 +33,9 @@
 
   <body>
     <div class="wrapper position-relative">
+      <div  contenteditable="true">
+        ali
+      </div>
       <%- include('../partials/header.ejs') %>
       <!-- modal certificert -->
       <div
@@ -92,10 +95,10 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div id="content_modal_product" class="modal-body">
+            <div id="content_modal_product" class="modal-body" style="height: 80vh  ;">
               <div
                 id="carouselExampleFade"
-                class="carousel slide carousel-fade"
+                class="carousel slide carousel-fade h-100"
                 data-bs-ride="carousel"
               >
                 <div class="carousel-inner"></div>
@@ -667,7 +670,7 @@
                 <a
                   style="border-radius: 15px"
                   href="/news/detail/<%= news[i].id %>"
-                  class="item d-block text-decoration-none overflow-hidden"
+                  class="item d-block text-decoration-none overflow-hidden h-100"
                 >
                   <div style="height: 215px" class="thumb_new overflow-hidden">
                     <img src="<%= news[i].img %>" alt="mobicam_news" />
@@ -691,6 +694,17 @@
       <%- include('../partials/footer.ejs') %>
     </div>
     <script src="/js/main.js"></script>
-    <!-- Google Translate Widget -->
+    <script
+  defer
+  src="https://translate.google.com/translate_a/element.js?cb=initGoogleTranslate"
+></script>
+<script>
+  function initGoogleTranslate() {
+    new google.translate.TranslateElement(
+      {  includedLanguages: "vi,en" },
+      "google_translate_element"
+    );
+  }
+</script>
   </body>
 </html>

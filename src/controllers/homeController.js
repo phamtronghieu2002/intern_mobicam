@@ -1,5 +1,4 @@
-// import * as newService from "../service/newService.js";
-// import * as categoryService from "../service/categoriesService.js";
+
 const newService = require("../services/newService.js");
 const categoryService = require("../services/categoriesService.js");
 
