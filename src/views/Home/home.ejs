@@ -194,15 +194,15 @@
             </p>
             <p>quả trong công tác quản lý và thúc đẩy gia tăng doanh số.</p>
           </article>
-          <button class="btn-primary rounded-pill mt-5 btn_dowloand">
+          
             <a
               target="_blank"
               href="https://mobicam.vn/assets/file/brochure_mobicam.pdf"
-              class="text-light text-decoration-none"
+              class="text-light text-decoration-none btn-primary rounded-pill mt-5 btn_dowloand d-inline-block"
             >
               Tải brochure
             </a>
-          </button>
+       
         </div>
 
         <div class="overlay"></div>
@@ -446,6 +446,7 @@
                   data-bs-target="#modalVideo"
                 >
                   <img
+                    alt="mobicam_ytb_reason"
                     src="https://mobicam.vn/uploads/ytb.png"
                     class="benefit_img2"
                     style="width: 70px"
@@ -492,7 +493,7 @@
                           <a href="https://app.mobicam.vn/app">
                             <img
                               src="/images/dowloand/chplay.png"
-                              alt=""
+                              alt="mobicam_chplay"
                               class="img_dowload-app"
                             />
                           </a>
@@ -503,7 +504,7 @@
                           >
                             <img
                               src="/images/dowloand/appstore.png"
-                              alt=""
+                              alt="mobicam_appstore"
                               class="img_dowload-app"
                             />
                           </a>
@@ -513,7 +514,7 @@
                         <div class="experience_dowload-qr">
                           <img
                             src="/images/dowloand/qr.jpg"
-                            alt=""
+                            alt="mobicam_qr-code"
                             class="img_dowload-qr"
                           />
                         </div>
@@ -525,14 +526,14 @@
                       <div class="experience_right-item">
                         <img
                           src="/images/dowloand/phone_left.png"
-                          alt=""
+                          alt="mobicam_phone_left"
                           class="experience_right-img animation-float"
                         />
                       </div>
                       <div class="experience_right-item">
                         <img
                           src="/images/dowloand/phone_right.png"
-                          alt=""
+                          alt="mobicam_phone_right"
                           class="experience_right-img animation-float"
                         />
                       </div>
@@ -577,7 +578,6 @@
                 id="<%= i == 0 ? 'defaultOpenCat' : '' %>"
                 onclick="hanndleOpenTabCat(event, '<%= categories[i].id %>');"
                 class="nav-item position-relative col-lg-4 col-sm-12"
-                role="presentation"
               >
                 <button class="nav-link nav-link-horizal">
                   <div class="btn-inner">
@@ -699,6 +699,7 @@
       </section>
       <%- include('../partials/footer.ejs') %>
     </div>
+    <script src="/utils/data.js"></script>
     <script src="/js/main.js"></script>
     <script
       defer
