@@ -96,7 +96,7 @@ section.hero-section {
   position: relative;
   overflow: hidden;
   /* height: 650px; */
-  margin-top: 80px;
+  margin-top: 57px;
 }
 
 section.hero-section .btn_dowloand{
@@ -290,10 +290,7 @@ section.achieve {
   padding: calc(var(--height-about) + 50px) 0 100px 0px;
 }
 
-section.achieve .item_img-container img {
-  width: 50px;
-  height: 50px;
-}
+
 section.achieve .item {
   display: flex;
   flex-direction: column;
@@ -342,6 +339,7 @@ section.benifit .right-content .benifit-item {
   display: flex;
   gap: 10px;
   cursor: pointer;
+
 }
 
 section.benifit .right-content .benifit-icon {
@@ -368,7 +366,7 @@ section.benifit .right-content .benifit-icon i {
   transition: 0.3s linear;
 }
 section.benifit .right-content .information {
-  width: 500px;
+  flex: 1;
 }
 section.benifit .right-content .information p {
   color: #001a33;
@@ -755,3 +753,5 @@ section.news .item {
 } */
 
 /*  */
+
+/*     custome */

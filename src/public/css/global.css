@@ -8,8 +8,13 @@ html{
   scroll-behavior: smooth;
 }
 
+article{
+  text-align: justify;
+}
 
-
+section.benifit{
+  text-align: justify;
+}
 @-webkit-keyframes MOVE-BG {
 	from {
 			  left: 0;

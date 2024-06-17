@@ -1,7 +1,5 @@
 /* mobile */
 @media (max-width: 768px) {
-
-
    section.the-best-feture-section
   {
     padding-bottom:550px;
@@ -24,7 +22,7 @@
     color: white !important;
   }
    section.hero-section {
-    margin-top: 33px;
+    margin-top: 9px;
   }
    section.hero-section .hero-video {
     height: 40vh;
@@ -69,37 +67,36 @@
     font-size: 0.8rem;
   }
 
-   section.benifit .right-content {
-    padding-left: 12px !important;
+ 
+  .experience_group{
+    padding-left: 10px;
   }
-   section.benifit .left-content {
-    align-items: center;
-  }
-  section.benifit .right-content .information {
-    width: 100%;
+
+
+  section.benifit .right-content .benifit-icon{
+    width: 64px;
+    height: 64px;
   }
 
   section.benifit .right-content .benifit-item{
     flex-direction: column;
     align-items: center;
   }
+   
+  footer{
+    font-size: 0.8rem;
+  }
+  footer .footer_follow-wrapper{
+    position: absolute;
+    bottom: 52px;
+    right: 26px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-  section.benifit .right-content .benifit-icon{
-    width: 64px;
-    height: 64px;
-  }
-  section.benifit .right-content .information h6
-  {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  .experience_group{
-    padding-left: 10px;
-  }
-  section.category .tab_btns_horizal {
-    box-shadow: none;
-  }
 }
 /* tab let and mobile */
 @media (max-width: 1024px) {
@@ -124,6 +121,27 @@
   section.method_section .list_certificate  .item{
     margin-bottom: 5px;
   }
+
+  section.benifit .right-content {
+    padding-left: 12px !important;
+  }
+   section.benifit .left-content {
+    align-items: center;
+  }
+  section.benifit .right-content .information {
+    width: 100%;
+  }
+
+ 
+ 
+  section.benifit .right-content .information h6
+  {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  section.category .tab_btns_horizal {
+    box-shadow: none;
+  }
 }
 /* tablet */
 @media (min-width: 739px) and (max-width: 1023px) {
@@ -134,5 +152,13 @@
   header .header_navigation a {
     font-size: 0.8rem;
   }
+  section.benifit .right-content .benifit-icon{
+    width: 80px;
+    height: 80px;
+  }
+  section.benifit .right-content .benifit-item{
+    align-items: center;
+  }
 
+  
 }

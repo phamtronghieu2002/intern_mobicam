@@ -13,7 +13,7 @@
   transform: translateY(-50%);
   color: var(--white-color);
   border: none;
-  background: var(--yellow-color);
+  background: var(--primary-color);
   width: 35px;
   height: 35px;
   display: flex !important;
@@ -46,7 +46,7 @@
   transform: translateY(-50%);
   color: var(--white-color);
   border: none;
-  background: var(--yellow-color);
+  background: var(--primary-color);
   width: 35px;
   height: 35px;
   display: flex !important;

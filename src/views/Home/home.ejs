@@ -33,9 +33,7 @@
 
   <body>
     <div class="wrapper position-relative">
-      <div  contenteditable="true">
-        ali
-      </div>
+      <div contenteditable="true">ali</div>
       <%- include('../partials/header.ejs') %>
       <!-- modal certificert -->
       <div
@@ -95,7 +93,11 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div id="content_modal_product" class="modal-body" style="height: 80vh  ;">
+            <div
+              id="content_modal_product"
+              class="modal-body"
+              style="height: 80vh"
+            >
               <div
                 id="carouselExampleFade"
                 class="carousel slide carousel-fade h-100"
@@ -144,31 +146,34 @@
           <div class="modal-content">
             <div class="modal-header text-center bg-dark text-light">
               <h2
-               style="flex: 1;"
+                style="flex: 1"
                 class="modal-title fs-5 text-center d-block"
                 id="heading_product_modal"
               >
                 12 lý do nên chọn sản phẩm của MOBICAM
               </h2>
               <button
+                style="border: none; font-size: 20px"
                 type="button"
                 class="bg-dark rounded-circle"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               >
-              <i class="fa-solid fa-xmark text-light"></i>
-            </button>
+                <i class="fa-solid fa-xmark text-light"></i>
+              </button>
             </div>
             <div id="content_modal_video" class="modal-body bg-dark">
-
               <video width="100%" height="100%" controls>
-                <source src="https://mobicam.vn/uploads/video/12lydochon.mp4" type="video/mp4">
+                <source
+                  src="https://mobicam.vn/uploads/video/12lydochon.mp4"
+                  type="video/mp4"
+                />
               </video>
             </div>
           </div>
         </div>
       </div>
-      <section  class="hero-section">
+      <section class="hero-section">
         <video autoplay loop muted class="hero-video">
           <source src="/video/videoHero.mp4" type="video/mp4" />
           Trình duyệt của bạn không hỗ trợ thẻ video.
@@ -177,7 +182,7 @@
         <div class="hero-content w-100">
           <h1 class="mb-3">CAMERA GIÁM SÁT HÀNH TRÌNH</h1>
           <h4 class="text-center mb-3">Giám sát tức thì - Sử dụng bền bỉ</h4>
-          <article class="hide-on-mobile">
+          <article class="hide-on-mobile text-center">
             <p>
               Với hơn 5+ năm hoạt động chúng tôi hiểu rõ nhu cầu của khách hàng
               và một thị trường nhiều tiềm năng và rộng lớn.
@@ -203,6 +208,7 @@
         <div class="overlay"></div>
       </section>
 
+ 
       <section class="method_section pt-5 pb-5">
         <div class="container d-flex gap-5">
           <div class="row">
@@ -265,7 +271,7 @@
         </div>
       </section>
 
-      <section  id="the-best-feture-section" class="the-best-feture-section">
+      <section id="the-best-feture-section" class="the-best-feture-section">
         <div class="container">
           <h2 class="text-primary text-center fw-bold mb-2">
             Tính năng ưu việt
@@ -338,7 +344,7 @@
       <section class="achieve d-flex align-items-center position-relative">
         <div class="overlay"></div>
         <div class="container">
-          <div class="row">
+          <div class="row align-items-end">
             <div class="col-lg-3 col-sm-6 mb-5">
               <div class="item text-light text-center">
                 <div class="item_img-container">
@@ -415,7 +421,7 @@
         </div>
       </section>
 
-      <section  id="benifit" class="benifit pt-5 pb-5">
+      <section id="benifit" class="benifit pt-5 pb-5">
         <div class="container">
           <h2 class="text-primary text-center fw-bold mb-2">
             Lợi ích của khách hàng
@@ -424,7 +430,7 @@
             <div class="dot"></div>
           </div>
           <div class="content row mt-5">
-            <div class="left-content col-lg-5 col-md-5 col-sm-12 mb-5">
+            <div class="left-content col-lg-5 col-md-6 col-sm-12 mb-5">
               <img
                 style="width: 400px; height: 320px"
                 class="main_img_content_benifit"
@@ -458,7 +464,7 @@
                 </div>
               </div>
             </div>
-            <div class="right-content col-lg-7 col-md-5 col-sm-12 ps-5"></div>
+            <div class="right-content col-lg-7 col-md-6 col-sm-12 ps-5"></div>
           </div>
         </div>
       </section>
@@ -553,7 +559,7 @@
         </div>
       </section>
 
-      <section id="category"  class="category pt-5">
+      <section id="category" class="category pt-5">
         <div class="container">
           <h2 class="text-primary text-center fw-bold mb-2">
             Chuyên mục sản phẩm
@@ -695,16 +701,16 @@
     </div>
     <script src="/js/main.js"></script>
     <script
-  defer
-  src="https://translate.google.com/translate_a/element.js?cb=initGoogleTranslate"
-></script>
-<script>
-  function initGoogleTranslate() {
-    new google.translate.TranslateElement(
-      {  includedLanguages: "vi,en" },
-      "google_translate_element"
-    );
-  }
-</script>
+      defer
+      src="https://translate.google.com/translate_a/element.js?cb=initGoogleTranslate"
+    ></script>
+    <script>
+      function initGoogleTranslate() {
+        new google.translate.TranslateElement(
+          { includedLanguages: "vi,en" },
+          "google_translate_element"
+        );
+      }
+    </script>
   </body>
 </html>
